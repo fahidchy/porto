@@ -4,7 +4,7 @@
             min-height: 400px;
             font-family: 'Trebuchet MS', sans-serif;
         }
-        /* Add a black background color to the top navigation */
+
         .topnav {
             background-color: lightskyblue;
             overflow: hidden;
@@ -12,10 +12,9 @@
         }
 
         h1{
-            padding: 14px 50px; 
+            padding-left: 15px; 
         }
 
-        /* Style the links inside the navigation bar */
         .topnav a {
             float: left;
             color: black;
@@ -27,43 +26,32 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* Change the color of links on hover */
         .topnav a:hover {
             background-color: #ddd;
             color: black;
         }
 
-        /* Add a color to the active/current link */
         .topnav a.active {
             background-color: rgb(64, 63, 63);
             color: white;
         }
 
-        /* Style inputs with type="text", select elements and textareas */
         input[type=text],
         input[type=email],
         textarea {
             width: 100%;
-            /* Full width */
+
             padding: 12px;
-            /* Some padding */
             border: 1px solid #ccc;
-            /* Gray border */
             border-radius: 4px;
-            /* Rounded borders */
             box-sizing: border-box;
-            /* Make sure that padding and width stays in place */
             margin-top: 6px;
-            /* Add a top margin */
             margin-bottom: 16px;
-            /* Bottom margin */
             resize: vertical
-                /* Allow the user to vertically resize the textarea (not horizontally) */
         }
 
-        /* Style the submit button with a specific background color etc */
         input[type=submit] {
-            background-color: #04AA6D;
+            background-color: lightblue;
             color: white;
             padding: 12px 20px;
             border: none;
@@ -71,12 +59,10 @@
             cursor: pointer;
         }
 
-        /* When moving the mouse over the submit button, add a darker green color */
         input[type=submit]:hover {
-            background-color: #45a049;
+            background-color: skyblue;
         }
 
-        /* Add a background color and some padding around the form */
         .container {
             border-radius: 5px;
             padding: 20px;
@@ -86,10 +72,10 @@
             margin: 5px;
             border: 1px solid #ccc;
             float: left;
-            width: 300px;
+            width: 200px;
         }
         div.galleryContainer {
-            padding-left: 30px;
+            padding-left: 14px;
         }
 
         div.gallery:hover {
@@ -101,17 +87,14 @@
             height: auto;
         }
 
-        div.gallery video {
-            width: 100%;
-            height: auto;
+        div.videoplay{
+            padding: 14px; 
         }
-
         div.desc {
             padding: 15px;
             text-align: center;
         }
 
-        /* Include padding and border in total box size*/
         * {
             box-sizing: border-box;
         }
@@ -122,8 +105,7 @@
             object-fit:cover;
         }
 
-        /* Create two equal columns that float next to each other */
-        .column-2 {
+        .about-box {
             float: left;
             width: 45%;
             padding: 40px;
@@ -141,7 +123,7 @@
 
         /* Large profile image */
         .large-profile {
-            background: url('../6.jpg');
+            background: url('../res/6.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -154,48 +136,49 @@
             height: 250px;
         }
 
-        .project-1 {
+        .expertise-1 {
             border-radius: 50%;
             background-color:navy;
             
         }
-        .project-1:hover {
-            background: url('../app.webp');
+        .expertise-1:hover {
+            background: url('../res/app.webp');
             background-size: cover;
           }
 
-        .project-2 {
+        .expertise-2 {
             border-radius: 50%;
             background-color: rgb(139, 11, 11);
         }
 
-        .project-2:hover {
-            background: url('../web.jpg');
+        .expertise-2:hover {
+            background: url('../res/web.jpg');
             background-size: cover;
           }
 
-        .project-3 {
+        .expertise-3 {
             border-radius: 50%;
             background-color: green;
         }
 
-        .project-3:hover {
-            background: url('../cyber.webp');
+        .expertise-3:hover {
+            background: url('../res/cyber.webp');
             background-size: cover;
           }
 
-        .project-4 {
+        .expertise-4 {
             border-radius: 50%;
             background-color: rgb(255, 123, 0);
         }
 
-        .project-4:hover {
-            background: url('../data.png');
+        .expertise-4:hover {
+            background: url('../res/data.png');
             background-size: cover;
           }
 
         div.solid {
             border-style: solid;
+            border-radius: 25px;
             padding: 14px 16px;
             margin: 30px;
             margin-right: 30px;
@@ -203,20 +186,22 @@
             background-color: rgb(48, 46, 46);
         }
 
-        .column-2a {
+        .education-box {
             float: left;
             width: 50%;
             padding: 40px;
             padding-right: 70px;
+            border-radius: 25px;
             height:450px;
             margin:30px;
             background-color:rgb(48, 46, 46);
            }
 
-           .column-2b {
+           .skills-box {
             float: left;
             width: 30%;
             padding: 40px;
+            border-radius: 25px;
             padding-left:70px;
             padding-right: 70px;
             padding-bottom:60px;
@@ -239,7 +224,7 @@
           
           
 
-           .project-text {
+           .expertise-text {
             text-align:center;
             font-size:50px;
             font-family: 'Impact', sans-serif;
@@ -251,6 +236,7 @@
             bottom: 0;
             padding-right: 10px;
             width: 100%;
+            height:5%;
             color: white;
             text-align: right;
           }
