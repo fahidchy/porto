@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost/webDevBlog/porto/blog.php",
+            "url": "http://localhost/porto/blog.php",
             "webRoot": "${workspaceFolder}"
         }
     ]
