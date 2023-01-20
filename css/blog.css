@@ -1,0 +1,12 @@
+ /* Blog home */
+ #user-account-panel-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    }
+    
+#user-account-panel-wrapper > p{
+        margin-right: 2rem;
+    }
+    
