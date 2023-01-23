@@ -4,11 +4,9 @@
   if(!isset($_SESSION['login_user'])){
   header("location:../blog.php");
 
-  $connection = new DatabaseConnection("localhost");
-  $connection->connect();
-  $result = $pdo->query("SELECT * FROM post")->fetchAll();
-    
 }
+  $connection = new DatabaseConnection("localhost");
+  $pdo = $connection->connect();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +57,58 @@
         </button>
       </div>
     </form>
-    <main></main>
+    <main>
+      <div id="create-collaborator-wrapper">
+        <?php
+          if(isset($_POST['create-collaborator'])){
+            header("location:./create-collaborator.php");
+          }
+        ?>
+
+        <form method="post">
+          <button class="create-button" name="create-collaborator" type="submit"><i class="fa-solid fa-plus"></i>Create collaborator</button>
+        </form>
+      </div>
+      <table border=1>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Username</th>
+          <th>Action</th>
+        </tr>
+      <?php
+        $result = $pdo->query("SELECT * FROM user WHERE ROLE='collaborator'")->fetchAll(PDO::FETCH_ASSOC);
+        for($i = 0; $i < count($result); $i++){
+          $fname = $result[$i]['FIRST_NAME'];
+          $lname = $result[$i]['LAST_NAME'];
+          $uname = $result[$i]['USERNAME'];
+          $uid = $result[$i]['USER_ID'];
+
+          if(isset($_POST['delete-collaborator-'.$i])){
+            $deleteUser = $pdo->query("DELETE FROM user WHERE USER_ID = $uid");
+            if($deleteUser){
+              echo "successfully deleted";
+              header("location:admin-collaborators.php");
+            }else{
+              echo "failed to delete";
+            }
+          }
+      ?>
+        <tr>
+          <td><?=$fname?></td>
+          <td><?=$lname?></td>
+          <td><?=$uname?></td>
+          <td>
+            <form action="" method="post">
+              <button type="submit" name="delete-collaborator-<?=$i?>">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <?php
+        }
+        $connection = null;
+      ?>
+      </table>
+    </main>
 </body>
 </html>
