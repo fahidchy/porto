@@ -34,7 +34,7 @@
     include "./php/DatabaseConnection.php";
     $connection = new DatabaseConnection("localhost");
     $pdo = $connection-> connect();
-    $result = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user WHERE post.USER_ID = user.USER_ID")->fetchAll(PDO::FETCH_ASSOC);
+    $result = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user WHERE post.USER_ID = user.USER_ID AND post.PUBLISHED = 1")->fetchAll(PDO::FETCH_ASSOC);
       
     for($i = 0; $i < count($result); $i++){
         $title = $result[$i]["TITLE"];
