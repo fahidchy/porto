@@ -85,11 +85,6 @@
         $postId = $result[$i]["POST_ID"];
         $name = $result[$i]["FIRST_NAME"]. " " . $result[$i]["LAST_NAME"];
        
-        // foreach ($result = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user WHERE post.USER_ID = user.USER_ID")->fetchAll(PDO::FETCH_ASSOC) as $row){
-          // $title=$row['TITLE'];
-          // $content=$row['CONTENT'];
-          // $image=$row['IMAGE'];
-
           //update button
           if(isset($_POST['update-post-'.$i])){
             $_SESSION['post_title']= $title;
@@ -101,7 +96,6 @@
 
           //delete button
           if(isset($_POST['delete-post-' .$i])){
-            // $postId= $result[$i]["POST_ID"];
             $deletepost = $pdo->query("DELETE FROM post WHERE POST_ID = $postId");
             if($deletepost){
               echo "successfully deleted";
@@ -111,11 +105,31 @@
             }
           }
 
+          //publish post
+          if(isset($_POST['publish-'.$i])){
+            $publishResult = $pdo->query("UPDATE post SET PUBLISHED = 1 WHERE POST_ID = $postId");
+            if($publishResult){
+              header("location:admin-posts.php");
+            }else{
+              echo "something went wrong.";
+            }
+          }
+
+          //unpublish post
+          if(isset($_POST['unpublish-'.$i])){
+            $unpublishResult = $pdo->query("UPDATE post SET PUBLISHED = 0 WHERE POST_ID = $postId");
+            if($unpublishResult){
+              header("location:admin-posts.php");
+            }else{
+              echo "something went wrong.";
+            }
+          }
+
           ?>
           <div class='post-parent-wrapper'>
           <form class='post-panel-wrapper' method="post" action="">
-                      <button class="<?=$published == 1 ? "active":""?>">Show</button>
-                      <button class="<?=$published == 0 ? "active":""?>">Hide</button>
+                      <button class="<?=$published == 1 ? "active":""?>" name="publish-<?=$i?>">Show</button>
+                      <button class="<?=$published == 0 ? "active":""?>" name="unpublish-<?=$i?>">Hide</button>
                       <button type="submit" name="update-post-<?=$i?>">Update</button>
                       <button type="submit" name="delete-post-<?=$i?>">Delete</button>
         </form>
