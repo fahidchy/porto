@@ -10,3 +10,20 @@
         margin-right: 2rem;
     }
     
+#search-form-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#search-form-wrapper>form{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#search-form-wrapper>form>input{
+    width: 80%;
+}
