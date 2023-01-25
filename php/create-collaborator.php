@@ -34,6 +34,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/loginAndRegister.css">
+    <script src="../jscripts/index.js" defer></script>
+    <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/692b5d8ceb.js" crossorigin="anonymous"></script>
     <title>Create Collaborators</title>
 </head>
@@ -56,15 +58,18 @@
         <form id="form" action="" method="post">
             <div class="label-input-wrapper">
                 <label for="fname">First name: </label>
-                <input type="text" name="fname" required >
+                <input type="text" name="fname" required  onblur="nameValidation(this.value,'.fname-error')" />
+                <span class="fname-error">Invalid first name</span>
             </div>
             <div class="label-input-wrapper">
                 <label for="lname">Last name: </label>
-                <input type="text" name="lname" required >
+                <input type="text" name="lname" required onblur="nameValidation(this.value,'.lname-error')"/>
+                <span class="lname-error">Invalid last name</span>
             </div>
             <div class="label-input-wrapper">
                 <label for="uname">Username: </label>
-                <input type="text" name="uname" required >
+                <input type="text" name="uname" required onblur="userNameValidation(this.value,'.uname-error')"/>
+                <span class="uname-error">Invalid username</span>
             </div>
             <div class="label-input-wrapper">
                 <label for="pw">Password: </label>

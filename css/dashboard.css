@@ -120,3 +120,18 @@ color: black;
 #visitor-back-button-form{
     padding: 2rem;
 }
+
+.post-panel-wrapper{
+    margin-bottom: 1rem;
+}
+
+.post-panel-wrapper > button{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.post-panel-wrapper > button:hover{
+    background-color: lightskyblue;
+}

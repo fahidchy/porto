@@ -48,21 +48,21 @@
         <button type="submit" name="search-button">Search</button>
     </form>
   </div>
-  <main>
-    <div id="create-post-wrapper">
-          <?php
-            if(isset($_POST['create-post'])){
-              $_SESSION['post_title']='';
-              $_SESSION['post_content']='';
-              $_SESSION['post_image']='';
-              $_SESSION['post_id']='';
-              header("location:./create-update-post.php");
-            }
-          ?>
-          <form method="post">
-            <button class="create-button" name="create-post" type="submit"><i class="fa-solid fa-plus"></i>Create Post</button>
-          </form>
-      </div>
+  <div id="create-post-wrapper">
+        <?php
+          if(isset($_POST['create-post'])){
+            $_SESSION['post_title']='';
+            $_SESSION['post_content']='';
+            $_SESSION['post_image']='';
+            $_SESSION['post_id']='';
+            header("location:./create-update-post.php");
+          }
+        ?>
+        <form method="post">
+          <button class="create-button" name="create-post" type="submit"><i class="fa-solid fa-plus"></i>Create Post</button>
+        </form>
+    </div>
+  <main id="collaborator-post-main">
     <?php
     include "DatabaseConnection.php";
     $connection = new DatabaseConnection("localhost");
@@ -116,16 +116,18 @@
           }
           
     ?>
-    <form class='post-panel-wrapper' method="post" action="">
-              <button class="<?=$published == 1 ? "active":""?>" disabled>Show</button>
-              <button class="<?=$published == 0 ? "active":""?>" disabled>Hide</button>
-              <button type="submit" name="update-post-<?=$i?>">Update</button>
-              <button type="submit" name="delete-post-<?=$i?>">Delete</button>
-    </form>
       <div class='post-parent-wrapper'>
-        <img alt='post_img' src="<?php
-        echo ($image =="../uploads/") ? "../uploads/no-image.png": $image;
-        ?>"style="width:5rem"/>
+        <form class='post-panel-wrapper' method="post" action="">
+                  <button class="<?=$published == 1 ? "active":""?>" disabled>Show</button>
+                  <button class="<?=$published == 0 ? "active":""?>" disabled>Hide</button>
+                  <button type="submit" name="update-post-<?=$i?>">Update</button>
+                  <button type="submit" name="delete-post-<?=$i?>">Delete</button>
+        </form>
+        <div class="post-image-wrapper">
+          <img alt='post_img' src="<?php
+          echo ($image =="../uploads/") ? "../uploads/no-image.png": $image;
+          ?>"/>
+        </div>
         <h2><?=$title?></h2>
         <p><?=$content?></p>
         <p>Date created: <?=$dateCreated?></p>
