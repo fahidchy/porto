@@ -14,11 +14,11 @@
             $_SESSION['login_user']=$_POST['username'];
             $_SESSION['user_id'] = $result[0]['USER_ID'];
             $_SESSION['role'] = $result[0]['ROLE'];
-            $_SESSION['login_user_name'] = $result[0]['FIRST_NAME']. $result[0]['LAST_NAME'];
+            $_SESSION['login_user_name'] = $result[0]['FIRST_NAME']. " ". $result[0]['LAST_NAME'];
             if($result[0]['ROLE']=='admin'){
                 header('location: ./admin-posts.php');
             }else{
-                header('location:./collaborator-posts.php');
+                header('location:./collaborator.php');
             }
         }else {
             $error = "Username or Password is invalid";

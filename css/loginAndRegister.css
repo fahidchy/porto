@@ -1,7 +1,7 @@
 body{
     font-family: 'Trebuchet MS', sans-serif;
     background-color: black;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 #parent-wrapper{
@@ -80,4 +80,8 @@ body{
 
 .label-input-wrapper > input[type=submit]:hover{
     background-color: #494949;
+}
+
+.label-input-wrapper > div{
+    display:flex;
 }
