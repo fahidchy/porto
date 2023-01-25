@@ -1,7 +1,9 @@
 <?php
   session_start();
   if(!isset($_SESSION['login_user'])){
-  header("location:../blog.php");
+    if($_SESSION['role'] !== 'admin'){
+      header("location:../blog.php");
+    }
   }
 ?>
 
@@ -133,7 +135,7 @@
                       <button type="submit" name="update-post-<?=$i?>">Update</button>
                       <button type="submit" name="delete-post-<?=$i?>">Delete</button>
         </form>
-          <img alt='post_img' src="<?=$image?>"/>
+          <img alt='post_img' src="<?=$image?>" style="width:5rem;"/>
           <h2><?=$title?></h2>
           <p><?=$content?></p>
           <p>By <?=$name?></p>

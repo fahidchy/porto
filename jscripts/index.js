@@ -7,3 +7,7 @@ $("#like-button").click(function(e){
         e.currentTarget.disabled = false;
     },5000);
 });
+
+$("#upload-image").click(function(){
+    $("#upload-image-input").trigger("click");
+});
