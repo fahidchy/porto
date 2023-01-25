@@ -27,3 +27,33 @@
 #search-form-wrapper>form>input{
     width: 80%;
 }
+
+#blog-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+.post-parent-wrapper{
+    background-color: white;
+    color: black;
+    width:50%;
+    border-radius: 5px;
+    padding: 2rem;
+    position: relative;
+}
+
+.post-parent-wrapper >img{
+    width: 5rem;
+}
+
+.view-post-button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    cursor: pointer;
+}

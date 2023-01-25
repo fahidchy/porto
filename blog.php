@@ -35,7 +35,7 @@
         <button type="submit" name="search-button">Search</button>
     </form>
   </div>
-  <main>
+  <main id="blog-main">
     <?php
     include "./php/DatabaseConnection.php";
     $connection = new DatabaseConnection("localhost");
@@ -82,17 +82,31 @@
           sleep(5);
         }
 
+        if(isset($_POST['view-post-' .$i])){
+          session_start();
+          $_SESSION['viewTitle'] = $title;
+          $_SESSION['viewContent'] =$content;
+          $_SESSION['viewAuthor'] = $name;
+          $_SESSION['viewDate'] = $dateCreated;
+          $_SESSION['viewImage']= $image;
+          header("location: php/visitor-view-post.php");
+        }
     ?>
+    
       <div class='post-parent-wrapper'>
-        <img alt='post_img' src="<?=$image?>"/>
+        <img alt='post_img' src="<?=substr($image,3)?>"/>
         <h2><?=$title?></h2>
         <p><?=$content?></p>
         <p>By <?=$name?></p>
-        <p>Date created: <?=$dateCreated?></p>
+        <p>Date created: <?php
+        $dateTime = DateTime::createFromFormat('Y-m-d', $dateCreated);
+        echo date_format($dateTime,"d-M-Y");
+        ?></p>
+        <form action="" method="post" onsubmit="return">
+          <button type="submit" id="like-button" name="like-post-button-<?=$i?>"><i class="fa-solid fa-thumbs-up"></i></button>
+          <button type="submit" class ="view-post-button" name="view-post-<?=$i?>">View</button>
+        </form>
       </div>
-      <form action="" method="post" onsubmit="return">
-        <button type="submit" id="like-button" name="like-post-button-<?=$i?>"><i class="fa-solid fa-thumbs-up"></i></button>
-      </form>
     <?php
         }
       $pdo = null;
