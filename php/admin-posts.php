@@ -14,6 +14,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../css/dashboard.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" type="text/css" href="../css/blog.css?v=<?php echo time(); ?>">
   <script src="https://kit.fontawesome.com/692b5d8ceb.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
   <title>Blog posts</title>
@@ -57,21 +58,21 @@
         </button>
       </div>
     </form>
-    <main>
-      <div id="create-post-wrapper">
-        <?php
-          if(isset($_POST['create-post'])){
-            $_SESSION['post_title']='';
-            $_SESSION['post_content']='';
-            $_SESSION['post_image']='';
-            $_SESSION['post_id']='';
-            header("location:./create-update-post.php");
-          }
-        ?>
-        <form method="post">
-          <button class="create-button" name="create-post" type="submit"><i class="fa-solid fa-plus"></i>Create Post</button>
-        </form>
-      </div>
+    <div id="create-post-wrapper">
+      <?php
+        if(isset($_POST['create-post'])){
+          $_SESSION['post_title']='';
+          $_SESSION['post_content']='';
+          $_SESSION['post_image']='';
+          $_SESSION['post_id']='';
+          header("location:./create-update-post.php");
+        }
+      ?>
+      <form method="post">
+        <button class="create-button" name="create-post" type="submit"><i class="fa-solid fa-plus"></i>Create Post</button>
+      </form>
+    </div>
+    <main id="admin-post-main">
       <?php
        include "DatabaseConnection.php";  
 
@@ -134,10 +135,12 @@
                       <button class="<?=$published == 0 ? "active":""?>" name="unpublish-<?=$i?>">Hide</button>
                       <button type="submit" name="update-post-<?=$i?>">Update</button>
                       <button type="submit" name="delete-post-<?=$i?>">Delete</button>
-        </form>
-          <img alt='post_img' src="<?=$image?>" style="width:5rem;"/>
+          </form>
+          <div class='post-image-wrapper'>
+            <img alt='post_img' src="<?=$image?>"/>
+          </div>
           <h2><?=$title?></h2>
-          <p><?=$content?></p>
+            <p id="post-content-paragraph"><?=$content?></p>
           <p>By <?=$name?></p>
           </div>
       <?php

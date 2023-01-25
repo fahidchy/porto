@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=C, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/dashboard.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="../css/blog.css?v=<?php echo time(); ?>">
   <script src="https://kit.fontawesome.com/692b5d8ceb.js" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
     <title>Document</title>
@@ -57,18 +58,18 @@
         </button>
       </div>
     </form>
-    <main>
-      <div id="create-collaborator-wrapper">
-        <?php
-          if(isset($_POST['create-collaborator'])){
-            header("location:./create-collaborator.php");
-          }
-        ?>
+    <div id="create-collaborator-wrapper">
+      <?php
+        if(isset($_POST['create-collaborator'])){
+          header("location:./create-collaborator.php");
+        }
+      ?>
 
-        <form method="post">
-          <button class="create-button" name="create-collaborator" type="submit"><i class="fa-solid fa-plus"></i>Create collaborator</button>
-        </form>
-      </div>
+      <form method="post">
+        <button class="create-button" name="create-collaborator" type="submit"><i class="fa-solid fa-plus"></i>Create collaborator</button>
+      </form>
+    </div>
+    <main id="admin-collaborator-main">
       <table border=1>
         <tr>
           <th>First name</th>
@@ -100,7 +101,7 @@
           <td><?=$uname?></td>
           <td>
             <form action="" method="post">
-              <button type="submit" name="delete-collaborator-<?=$i?>">Delete</button>
+              <button class="delete-collaborator" type="submit" name="delete-collaborator-<?=$i?>">Delete</button>
             </form>
           </td>
         </tr>

@@ -10,30 +10,75 @@
         margin-right: 2rem;
     }
     
-#search-form-wrapper{
+#search-popular-form-wrapper{
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#search-form-wrapper>form{
-    width: 40%;
+#search-popular-form-wrapper>form{
+    width:50%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
-#search-form-wrapper>form>input{
-    width: 80%;
+#search-popular-form-wrapper>form:nth-child(2){
+    margin-right: 2rem;
 }
 
-#blog-main{
+.popular-button{
+    color: black;
+    background-color: lightskyblue;
+    border-radius: 5px;
+    padding: .5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 2rem;
+}
+
+.popular-button:hover{
+    background-color: rgb(48, 172, 248);
+    color: white;
+}
+
+.search-input{
+    width: 85% !important;
+}
+
+#search-form-wrapper{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#search-form-wrapper > form{
+    width: 40%;
+    margin-right: 2rem;
+}
+
+#search-form-wrapper > form >input{
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    width: 85% !important;
+}
+
+
+#blog-main,#admin-post-main,#admin-collaborator-main, #collaborator-post-main{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
+    margin-top: 2rem;
 }
 
 .post-parent-wrapper{
@@ -46,8 +91,30 @@
     margin-bottom: 2rem;
 }
 
-.post-parent-wrapper >img{
-    width: 5rem;
+/* image */
+.post-image-wrapper{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-image-wrapper>img{
+    width: 70%;
+}
+
+.post-parent-wrapper >h2{
+    text-transform: capitalize;
+}
+
+/* like */
+.post-parent-wrapper > form > div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.post-parent-wrapper > form > div >button{
+    margin-right: .5rem;
 }
 
 .view-post-button{
@@ -69,4 +136,25 @@
 
 .section-title{
     width: 50%;
+}
+
+#post-content-paragraph{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#admin-collaborator-main > table{
+    width: 60%;
+}
+
+.delete-collaborator{
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+.delete-collaborator:hover{
+    background-color: lightskyblue;
 }

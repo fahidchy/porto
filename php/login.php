@@ -6,7 +6,7 @@
     
     if (isset($_POST['signin'])){
         $pdo = $connection->connect();
-        $query = $pdo->prepare("SELECT * FROM user WHERE USERNAME=? AND PASSWORD=?");
+        $query = $pdo->prepare("SELECT * FROM user WHERE USERNAME=? AND PASSWORD=password(?)");
         $query->execute([$_POST['username'],$_POST['password']]);
         $result = $query->fetchAll();
         if($result){
@@ -35,6 +35,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/loginAndRegister.css">
+    <script src="../jscripts/index.js" defer></script>
     <script src="https://kit.fontawesome.com/692b5d8ceb.js" crossorigin="anonymous"></script>
     <title>Blogpost Sign in</title>
 </head>

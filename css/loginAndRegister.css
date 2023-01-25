@@ -66,6 +66,20 @@ body{
         color: black;
 }
 
+.label-input-wrapper > textarea{
+        width: 100%;
+        min-height: 10rem;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: black;
+        overflow: auto;
+        resize: none;
+}
+
 .label-input-wrapper > input[type=submit]{
     width: 100%;
     background-color: #848484;
@@ -84,4 +98,23 @@ body{
 
 .label-input-wrapper > div{
     display:flex;
+}
+
+.label-input-wrapper > span{
+    display: none;
+    color:red;
+}
+
+#upload-button-wrapper{
+    margin-bottom: 1rem;
+}
+
+#upload-image{
+    color: rgb(255, 255, 255);
+    background-color: rgb(117, 117, 117);
+    border-radius: 5px;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
 }

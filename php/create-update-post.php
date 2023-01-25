@@ -143,7 +143,7 @@
             </div>
             <div class="label-input-wrapper">
                 <input type="file" id="upload-image-input" name="image" value="<?= $sessionImage?>" accept="image/jpeg,image/png,image/jpg,image/gif" style="visibility:hidden"/>
-                <div>
+                <div id="upload-button-wrapper">
                     <button id="upload-image" type="button">Upload image</button>
                     <label><?php
                     if($sessionImage != '../uploads/no-image.png'){
