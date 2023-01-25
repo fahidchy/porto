@@ -103,3 +103,20 @@ color: black;
     background-color: rgb(48, 172, 248);
     color: white;
 }
+
+/* vistor-view-post.php */
+#visitor-view-main > h1, h4{
+    text-transform: capitalize;
+}
+
+#visitor-view-main{
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+#visitor-back-button-form{
+    padding: 2rem;
+}
