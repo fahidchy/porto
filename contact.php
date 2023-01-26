@@ -10,7 +10,7 @@
     $content = $_POST['message'];
 
     $stmt = $pdo->prepare("INSERT INTO message (FROM_EMAIL,FROM_MOBILE, FROM_NAME, CONTENT) VALUES(?,?,?,?)");
-    $result = $stmt->execute([$name,$email,$mobile,$content]);
+    $result = $stmt->execute([$email,$mobile,$name,$content]);
     if($result){
       header("location:contact.php");
     }

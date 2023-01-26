@@ -11,7 +11,7 @@ class DatabaseConnection{
     function connect(){
         global $host, $dbname, $pdoObj;
         try{
-            $connString = "mysql:host={$host};dbname=webdevblog";
+            $connString = "mysql:host={$host};dbname=blogdb";
             $pdoObj = new PDO($connString, "root", "");
             $pdoObj -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         }catch(PDOException $e){

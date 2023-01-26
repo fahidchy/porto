@@ -1,6 +1,11 @@
 <?php
+session_start();
 include "DatabaseConnection.php";  
-
+if(!isset($_SESSION['login_user'])){
+  if($_SESSION['role'] != 'admin'){
+    header("location:../blog.php");
+  }
+}
 $connection = new DatabaseConnection("localhost");
 $pdo = $connection->connect();
 $messages = $pdo->query("SELECT * FROM message")->fetchAll(PDO::FETCH_ASSOC);
@@ -28,6 +33,13 @@ $messages = $pdo->query("SELECT * FROM message")->fetchAll(PDO::FETCH_ASSOC);
       <button class="back-button" type="submit" name="back-button-post"><i class="fa-solid fa-arrow-left"></i></button>
   </form>
     <main id="messages-main">
+    <?php
+      if(count($messages)<= 0){
+    ?>
+    <p>No message</p>
+    <?php
+    }
+    ?>
     <?php
         for($i = 0; $i < count($messages); $i++){
           $name = $messages[$i]["FROM_NAME"];

@@ -14,7 +14,7 @@
         $uname = $_POST['uname'];
         $pw = $_POST['pw'];
 
-        $query = $pdo->prepare("INSERT INTO user (FIRST_NAME, LAST_NAME, USERNAME, PASSWORD, ROLE) VALUES (?,?,?,?,?)");
+        $query = $pdo->prepare("INSERT INTO user (FIRST_NAME, LAST_NAME, USERNAME, PASSWORD, ROLE) VALUES (?,?,?,PASSWORD(?),?)");
         $result = $query->execute([$fname,$lname,$uname,$pw,"collaborator"]);
         if($result){
             echo "success";

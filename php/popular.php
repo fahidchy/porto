@@ -3,7 +3,7 @@ include "DatabaseConnection.php";
 
 $connection = new DatabaseConnection("localhost");
 $pdo = $connection->connect();
-$popularResult = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user WHERE post.USER_ID = user.USER_ID ORDER BY post.POST_LIKE DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
+$popularResult = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user WHERE post.USER_ID = user.USER_ID AND post.POST_LIKE > 0 ORDER BY post.POST_LIKE DESC LIMIT 3")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +65,9 @@ $popularResult = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user W
         }
     ?>
       <div class='post-parent-wrapper'>
-          <img alt='post_img' src="<?=substr($image,3)?>"/>
+          <div class='post-image-wrapper'>
+            <img alt='post_img' src="<?=$image?>"/>
+          </div>
           <h2><?=$title?></h2>
           <p id="post-content-paragraph"><?=$content?></p>
           <p>By <?=$name?></p>
@@ -74,8 +76,10 @@ $popularResult = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user W
           echo date_format($dateTime,"d-M-Y");
           ?></p>
           <form action="" method="post" onsubmit="return">
+          <div>
             <button type="submit" id="like-popular-button" name="like-popular-button-<?=$i?>"><i class="fa-solid fa-thumbs-up"></i></button>
             <span><?=$postLike?></span>
+          </div>
             <button type="submit" class ="view-post-button" name="view-popular-post-<?=$i?>">View</button>
           </form>
         </div>
