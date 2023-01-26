@@ -24,7 +24,7 @@
 
     <a href="hobbies.html">Hobbies</a>
     <a class="active" href="blog.php">Blog</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.php">Contact</a>
   </nav>
   <header>
     <div id="user-account-panel-wrapper">

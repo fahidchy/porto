@@ -42,7 +42,19 @@
           Log out
         </button>
     </form>
+    
   </header> 
+  <?php
+      if(isset($_POST['messages'])){
+        header('location: admin-messages.php');
+      }
+    ?>
+  <form method="post" action="" id="messages-wrapper">
+        <button type="submit"name="messages">
+          <i class="fa-solid fa-inbox"></i>
+          Messages
+        </button>
+    </form>
   <?php
     if(isset($_POST['gotocollab'])){
         header("location: ./admin-collaborators.php");
