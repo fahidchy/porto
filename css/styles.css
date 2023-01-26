@@ -249,4 +249,22 @@
            }
 
 
-          
+          /* contact form */
+
+          #contact-main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          #contact-main> form{
+            width: 50%;
+          }
+
+          .err-msg-email, .name-error,.err-msg-mobile{
+            color: red;
+          }
+
+          .name-error{
+            display: none;
+          }

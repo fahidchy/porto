@@ -26,6 +26,30 @@ function validatePasswordMatch(value,elementClass, targetElement, targetElementC
     }
 }
 
+const validateEmail = () => {
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const email = $('#email')[0].value;
+    if(email === ""){
+        document.querySelector(".err-msg-email").innerHTML = "Please enter your email";
+     }else if(!emailRegex.test(email)){
+        document.querySelector(".err-msg-email").innerHTML = "Invalid email";
+     }else{
+         document.querySelector(".err-msg-email").innerHTML ="";
+     }
+}
+
+const validateMobileNum = () => {
+    const mobileRegex = /^04\d{8}$/;
+    const mobileNum = $('#mobileNum')[0].value;
+    if(mobileNum === ""){
+        document.querySelector(".err-msg-mobile").innerHTML ="";
+    }else if(!mobileRegex.test(mobileNum)){
+        document.querySelector(".err-msg-mobile").innerHTML = "Invalid mobile number";
+    }else{
+        document.querySelector(".err-msg-mobile").innerHTML ="";
+    }
+}
+
 $("#like-button").click(function(e){
     setTimeout(() => {
         e.currentTarget.disabled = true;
