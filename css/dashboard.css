@@ -30,9 +30,24 @@ header > form > button{
     font-size: 1rem;
 }
 
-header > form > button:hover{
+header > form > button:hover, #messages-wrapper > button:hover{
     background-color: rgb(39, 168, 248);
     color: white;
+}
+
+#messages-wrapper > button{
+    color: black;
+    background-color: lightskyblue;
+    border-radius: 5px;
+    padding: .5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 2rem;
+}
+
+#messages-wrapper{
+    display: flex;
+    justify-content: flex-end;
 }
 
 .admin-nav-parent{
@@ -134,4 +149,19 @@ color: black;
 
 .post-panel-wrapper > button:hover{
     background-color: lightskyblue;
+}
+
+
+/* admin-message */
+
+#messages-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.message-wrapper{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 2rem;
+    width: 80%;
 }
