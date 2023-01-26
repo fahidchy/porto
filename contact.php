@@ -33,40 +33,6 @@
       <input type="submit" value="Submit">
 
     </form>
-
-    <script>
-      function validationFunction(){
-          var name=document.myForm.name.value;
-          var email=document.myForm.email.value;
-          var phone=document.myForm.phone.value;
-          var subject=document.myForm.subject.value;
-
-          if (name==null || name==""){
-              alert("Name can't be blank");
-              return false;
-          }
-          else if(email==null || email==""){
-            alert("Email can't be blank");
-              return false;
-          }
-          else if(phone==null || phone=="" ){
-            alert("Phone number can't be blank");
-              return false;
-          }
-          else if(/[a-zA-Z]/.test(phone) ){
-            alert("Phone number can't contain any letters");
-              return false;
-          }
-          else if(subject==null || subject==""){
-            alert("Subject cant be blank");
-              return false;
-          }
-          else{
-            alert("Successfully Submitted");
-              return true;
-          }
-      }
-  </script>
   </div>
   <footer>
     <p >Created by Fahid Chy<br>
