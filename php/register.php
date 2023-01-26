@@ -3,6 +3,10 @@ include "DatabaseConnection.php";
 $error='';
 $success='';
 $connection = new DatabaseConnection("localhost");
+$pdo = $connection->connect();
+
+$usernameCheckQuery = "SELECT USERNAME FROM user";
+$usernameResult = $pdo->query($usernameCheckQuery)->fetchAll(PDO::FETCH_ASSOC);
 
 if(isset($_POST['register'])){
     $firstName=$_POST['fname'];
@@ -10,7 +14,13 @@ if(isset($_POST['register'])){
     $username=$_POST['username'];
     $password=$_POST['password'];
 
-    $pdo = $connection->connect();
+    for($i = 0; $i <count($usernameResult); $i++){
+        if($usernameResult[$i]['USERNAME'] == $username){
+            echo "Username already exists.";
+            return;
+        }
+    }
+   
     $query = $pdo->prepare("INSERT INTO user (FIRST_NAME, LAST_NAME, USERNAME, PASSWORD,ROLE) VALUES (?,?,?,password(?),?)");
     $result = $query->execute([$firstName,$lastName,$username,$password,"collaborator"]);
     if($result){
