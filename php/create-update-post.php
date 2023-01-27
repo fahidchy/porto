@@ -59,7 +59,7 @@
     } else {
         
         $query = $pdo->prepare("INSERT INTO post (TITLE, CONTENT, DATE_CREATED, IMAGE,USER_ID,PUBLISHED) VALUES (?,?,?,?,?,?)");
-        $result = $query->execute([$title,$content,$dateNow,$theUploadedImg,$userid,1]);
+        $result = $query->execute([$title,$content,$dateNow,$target_file,$userid,1]);
     }
 
     if ($result) {
