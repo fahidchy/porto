@@ -3,7 +3,7 @@
   if(!isset($_SESSION['login_user'])){
     if($_SESSION['role'] !== 'admin'){
       header("location:../blog.php");
-    }
+    } 
   }
 ?>
 
@@ -86,12 +86,11 @@
     </div>
     <main id="admin-post-main">
       <?php
-       include "DatabaseConnection.php";  
+      include "DatabaseConnection.php";
 
-       $connection = new DatabaseConnection("localhost");
-       $pdo = $connection->connect();
-       $result = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user WHERE post.USER_ID = user.USER_ID")->fetchAll(PDO::FETCH_ASSOC);
-          
+      $connection = new DatabaseConnection("localhost");
+      $pdo = $connection->connect();
+      $result = $pdo->query("SELECT *, FIRST_NAME, LAST_NAME  FROM post, user WHERE post.USER_ID = user.USER_ID")->fetchAll(PDO::FETCH_ASSOC);          
        for($i=0; $i < count($result); $i++){
         $title = $result[$i]["TITLE"];
         $content= $result[$i]["CONTENT"];
@@ -113,8 +112,7 @@
           if(isset($_POST['delete-post-' .$i])){
             $deletepost = $pdo->query("DELETE FROM post WHERE POST_ID = $postId");
             if($deletepost){
-              echo "successfully deleted";
-              header("location:admin-posts.php");
+              echo "<script>window.location.href='admin-posts.php';</script>";
             }else{
               echo "failed to delete";
             }
@@ -124,7 +122,7 @@
           if(isset($_POST['publish-'.$i])){
             $publishResult = $pdo->query("UPDATE post SET PUBLISHED = 1 WHERE POST_ID = $postId");
             if($publishResult){
-              header("location:admin-posts.php");
+              echo "<script>window.location.href='admin-posts.php';</script>";
             }else{
               echo "something went wrong.";
             }
@@ -134,19 +132,18 @@
           if(isset($_POST['unpublish-'.$i])){
             $unpublishResult = $pdo->query("UPDATE post SET PUBLISHED = 0 WHERE POST_ID = $postId");
             if($unpublishResult){
-              header("location:admin-posts.php");
+              echo "<script>window.location.href='admin-posts.php';</script>";
             }else{
               echo "something went wrong.";
-            }
+            }          
           }
-
           ?>
           <div class='post-parent-wrapper'>
           <form class='post-panel-wrapper' method="post" action="">
-                      <button class="<?=$published == 1 ? "active":""?>" name="publish-<?=$i?>">Show</button>
-                      <button class="<?=$published == 0 ? "active":""?>" name="unpublish-<?=$i?>">Hide</button>
-                      <button type="submit" name="update-post-<?=$i?>">Update</button>
-                      <button type="submit" name="delete-post-<?=$i?>">Delete</button>
+            <button class="<?=$published == 1 ? "active":""?>" name="publish-<?=$i?>" type="submit">Show</button>
+            <button class="<?=$published == 0 ? "active":""?>" name="unpublish-<?=$i?>" type="submit">Hide</button>
+            <button type="submit" name="update-post-<?=$i?>">Update</button>
+            <button type="submit" name="delete-post-<?=$i?>">Delete</button>
           </form>
           <div class='post-image-wrapper'>
             <img alt='post_img' src="<?=$image?>"/>
