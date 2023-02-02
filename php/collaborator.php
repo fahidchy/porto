@@ -108,8 +108,7 @@
            if(isset($_POST['delete-post-' .$i])){
             $deletepost = $pdo->query("DELETE FROM post WHERE POST_ID = $postId");
             if($deletepost){
-              echo "successfully deleted";
-              header("location: ./collaborator.php");
+              echo "<script>window.location.reload()</script>";
             }else{
               echo "failed to delete";
             }
@@ -129,7 +128,7 @@
           ?>"/>
         </div>
         <h2><?=$title?></h2>
-        <p><?=$content?></p>
+        <p id="post-content-paragraph"><?=$content?></p>
         <p>Date created: <?=$dateCreated?></p>
       </div>
     <?php

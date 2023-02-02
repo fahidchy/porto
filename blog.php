@@ -1,4 +1,5 @@
 <?php
+  session_start();
   include "./php/DatabaseConnection.php";
   $connection = new DatabaseConnection("localhost");
   $pdo = $connection-> connect();
@@ -89,7 +90,7 @@
           $query = $pdo->prepare("UPDATE post SET POST_LIKE=? WHERE POST_ID = $postId");
           $likeResult = $query->execute([$totalLike]);
           if($likeResult){
-            header("location:blog.php");
+            echo "<script>window.location.href='blog.php';</script>";
           }else{
             echo "Failed to like the post";
           }
@@ -97,13 +98,12 @@
         }
 
         if(isset($_POST['view-post-' .$i])){
-          session_start();
           $_SESSION['viewTitle'] = $title;
           $_SESSION['viewContent'] =$content;
           $_SESSION['viewAuthor'] = $name;
           $_SESSION['viewDate'] = $dateCreated;
           $_SESSION['viewImage']= $image;
-          header("location: php/visitor-view-post.php");
+          echo "<script>window.location.href='php/visitor-view-post.php';</script>";
         }
     ?>
     

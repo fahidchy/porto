@@ -3,6 +3,7 @@
   if(!isset($_SESSION['login_user'])){
     if($_SESSION['role'] !== 'admin'){
       header("location:../blog.php");
+      exit;
     } 
   }
 ?>
@@ -34,6 +35,7 @@
         unset($_SESSION['role']);
         session_destroy();
         header('location: ../blog.php');
+        exit;
       }
     ?>
     <form method="post" action="">
@@ -47,6 +49,7 @@
   <?php
       if(isset($_POST['messages'])){
         header('location: admin-messages.php');
+        exit;
       }
     ?>
   <form method="post" action="" id="messages-wrapper">
@@ -58,6 +61,7 @@
   <?php
     if(isset($_POST['gotocollab'])){
         header("location: ./admin-collaborators.php");
+        exit;
     }
   ?>
     <form class="admin-nav-parent" method="post">
@@ -78,6 +82,7 @@
           $_SESSION['post_image']='';
           $_SESSION['post_id']='';
           header("location:./create-update-post.php");
+          exit;
         }
       ?>
       <form method="post">
@@ -105,7 +110,7 @@
             $_SESSION['post_content']=$content;
             $_SESSION['post_image']=$image;
             $_SESSION['post_id']= $postId;
-            header("location:./create-update-post.php");
+            echo "<script>window.location.href='create-update-post.php';</script>";
           }
 
           //delete button
